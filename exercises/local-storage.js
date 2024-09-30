@@ -39,13 +39,14 @@
 
 // Your code goes here...
 const container = document.querySelector(".cardsContainer");
+const favColor = "red";
 
 function setFavoritesBackground() {
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   favorites.forEach((id) => {
     const item = document.getElementById(id);
     if (item) {
-      item.classList.add("red");
+      item.classList.add(favColor);
       item.setAttribute("data-fav", "true");
     }
   });
@@ -73,11 +74,11 @@ function updateItemBackground(event) {
   const isFavorite = item.getAttribute("data-fav") === "true";
 
   if (!isFavorite) {
-    item.classList.add("red");
+    item.classList.add(favColor);
     item.setAttribute("data-fav", "true");
     addToFavorites(itemId);
   } else {
-    item.classList.remove("red");
+    item.classList.remove(favColor);
     item.setAttribute("data-fav", "false");
     removeFromFavorites(itemId);
   }
